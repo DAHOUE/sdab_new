@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sdab_new/Components/rounded_button.dart';
 import 'package:sdab_new/Components/rounded_text_button.dart';
 import 'package:sdab_new/Components/text_with_style.dart';
-import 'package:sdab_new/Screen/Login/login_screen.dart';
+import 'package:sdab_new/Screen/CardDynamique/card_dynamic.dart';
 import 'package:sdab_new/Screen/Welcome/Component/background.dart';
 import 'package:sdab_new/constants.dart';
 
@@ -27,19 +26,19 @@ class _BodyStateState extends State<Body> {
 
         children: [
           Container(
-            padding: EdgeInsets.all(40.0),
+            padding: EdgeInsets.all(60.0),
             width: size.width,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset("assets/IMG-20210325-WA0017.jpg", height: size.width * 0.50,),
-                TextWithStyle(text: loginClicked? "Connectez-vous sur votre compte" : "Créer un compte                    ",
+                TextWithStyle(text: loginClicked? "Connectez-vous sur votre compte" : "                         Créer un compte",
                     fontWeight: FontWeight.bold,
                     fontSize: size.height * 0.05),
                 Divider(thickness: 5,
                   height: 30,
                   color: color_black,
-                  endIndent: size.width * 0.80,),
+                  endIndent: size.width * 0.60,),
                 TextWithStyle(text: "Pour accéder aux fonctionnalités importantes de l'application",
                   fontSize: size.height * 0.03,
                 ),
@@ -55,18 +54,17 @@ class _BodyStateState extends State<Body> {
                   setState(() {
                     loginClicked = false;
                   });
-                }, child: TextWithStyle(text: "Inscription",)),
+                }, child: TextWithStyle(text: "Inscription", colors: loginClicked ? color_black : color_green,)),
                 SizedBox(width: 75.0,),
                 TextButton(onPressed: (){
                   setState(() {
                     loginClicked = true;
                   });
-                }, child: TextWithStyle(text: "Connexion",))
+                }, child: TextWithStyle(text: "Connexion", colors: loginClicked ? color_black : color_green,))
               ],
             ),
           ),
           Expanded(
-            flex: 1,
             child: Container(
               color: color_green,
               width: size.width,
@@ -74,40 +72,17 @@ class _BodyStateState extends State<Body> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  RoundedTextButton(text: loginClicked ? "Connectez-vous ici" : "Inscrevez-vous ici",)
+                  RoundedTextButton(text: loginClicked ? "Connectez-vous ici" : "Inscrevez-vous ici",
+                  press: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Carte()));
+                  })
                 ],
               ),
             ),
           )
         ],
-
       ),
-
-      /*child1: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Image.asset("assets/IMG-20210325-WA0017.jpg", height: size.width * 0.50,),
-          TextWithStyle(text: "Connectez-vous sur votre compte",
-              fontWeight: FontWeight.bold,
-              fontSize: size.height * 0.05),
-          Divider(thickness: 5,
-            height: 30,
-            color: color_green,
-            endIndent: size.width * 0.80,),
-          TextWithStyle(text: "Pour accéder aux fonctionnalités importantes de l'application",
-            fontSize: size.height * 0.03,
-          ),
-        ],
-      ),
-
-      child2: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            RoundedTextButton(text: "Connectez-vous ici",)
-          ],
-        ),
-      ),*/
     );
   }
 }
