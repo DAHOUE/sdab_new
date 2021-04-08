@@ -23,7 +23,7 @@ class _BobyState extends State<Body> {
         child: Column(
           children: [
             HomeHeader(),
-            SizedBox(height: 20),
+            SizedBox(height: 30),
             Categories(),
             Actuality(),
             Recommandation(),

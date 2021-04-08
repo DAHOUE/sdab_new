@@ -98,7 +98,9 @@ class RecommandationCard extends StatelessWidget {
                             ),
                             child: CachedNetworkImage(
                               imageUrl:img,
-                              placeholder: (context, url) => LinearProgressIndicator(),
+                              placeholder: (context, url) =>  Container(
+                                  height: 5,
+                                  child:Center(child:LinearProgressIndicator())),
                               errorWidget: (context, url, error) => Image.asset(img),
 
                             )

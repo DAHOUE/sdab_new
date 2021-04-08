@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 
 
+import '../../constants.dart';
 import 'components/body.dart';
+import 'components/homepopup.dart';
 
 
 class HomeScreens extends StatefulWidget {
   int bottomSelectedIndex=0;
+
   @override
   _HomeScreensState createState() => _HomeScreensState();
 }
 
 class _HomeScreensState extends State<HomeScreens> {
 
+  bool isPoPup=false;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    isPoPup=false;
   }
 
   @override
@@ -23,21 +28,25 @@ class _HomeScreensState extends State<HomeScreens> {
     return Scaffold(
 
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.blueGrey),
         title: Text("e-pineA",style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 17,
-            color: Colors.green
+            color: color_green
         ),),
-        backgroundColor: Colors.white,
+        backgroundColor: color_white,
         actions: [
-          IconButton(icon: Icon(Icons.search,color: Colors.green,), onPressed: (){
+          IconButton(icon: Icon(Icons.search,color: color_green,), onPressed: (){
 
           })
         ],
       ),
-      body: Body(),
+      body: Stack(children: [
+        widget.bottomSelectedIndex==0?Body():Container(),
+        Positioned(child:isPoPup?HomePopUp(function: changeIsPoPup,): Container())
+      ],),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.green,
+        selectedItemColor: color_yellow,
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -74,15 +83,17 @@ class _HomeScreensState extends State<HomeScreens> {
 
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Colors.white,
+          color:color_white,
 
         ),
         child: Column(children: [
           Spacer(),
           FloatingActionButton(
-            backgroundColor: Colors.green,
+            backgroundColor: color_yellow,
             child: Icon(Icons.add),
-            onPressed: () {},
+            onPressed: () {
+              changeIsPoPup();
+            },
           ),
           Spacer()
         ],),
@@ -92,6 +103,12 @@ class _HomeScreensState extends State<HomeScreens> {
       FloatingActionButtonLocation.miniCenterDocked,
       //bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
     );
+  }
+
+  void changeIsPoPup(){
+    setState(() {
+      isPoPup=!isPoPup;
+    });
   }
 }
 
