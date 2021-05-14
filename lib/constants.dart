@@ -13,3 +13,6 @@ const String recommandation="Recommandations";
 const String another_actuality="Découvrez l'actualité sur l'ananas";
 const String otp="OTP";
 const String paie="PAIEMENT";
+
+//
+String type;

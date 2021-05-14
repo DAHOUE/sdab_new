@@ -39,7 +39,7 @@ class _Body extends State<Body> {
                 ),
               ),),
             Padding(
-              padding: const EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 0.0),
+              padding: const EdgeInsets.fromLTRB(30.0, 30.0,30.0, 0.0),
 
               child:  DropdownButtonFormField(
                 isExpanded: true,
@@ -69,8 +69,7 @@ class _Body extends State<Body> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
-
+              padding: const EdgeInsets.fromLTRB(30.0, 30.0,30.0, 0.0),
               child:  DropdownButtonFormField(
                 isExpanded: true,
                 icon: Icon(Icons.keyboard_arrow_down),
@@ -99,7 +98,7 @@ class _Body extends State<Body> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 0.0),
+              padding: const EdgeInsets.fromLTRB(30.0, 30.0,30.0, 0.0),
               child: TextFormField(
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
@@ -111,7 +110,7 @@ class _Body extends State<Body> {
               ),
 
             ),
-            Padding(padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
+            Padding(padding: const EdgeInsets.fromLTRB(30.0, 30.0,30.0, 0.0),
               child: TextFormField(
               showCursor: false,
               enableInteractiveSelection: false,
@@ -128,39 +127,50 @@ class _Body extends State<Body> {
                     minimumSize: MaterialStateProperty.all(Size(8.0,15.0)),
                     backgroundColor: MaterialStateProperty.all(constants.color_green),
                   ),
-                  child: Icon(Icons.add, color: Colors.white, size: 25.0,),),
+                    child: Icon(Icons.add_location_outlined, color: Colors.white,),
                 )
               ),
-            ),),
+            ),),),
 
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 0.0),
-            child: GestureDetector(
-              child: TextButton(
-                onPressed: (){},
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(30.0, 30.0,30.0, 0.0),
+              child: GestureDetector(
+                child: TextButton(
+                  onPressed: (){},
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
 
-                  children: [
+                    children: [
 
 
-                    Container(
-                      margin: EdgeInsets.all(8.0),
-                      child: Text(
-                        "Valider",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    )],
-                ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(constants.color_green),
-                  elevation: MaterialStateProperty.all(15.0),
+                      Container(
+                        margin: EdgeInsets.all(8.0),
+                        child: Text(
+                          "Valider",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )],
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(constants.color_green),
+                    elevation: MaterialStateProperty.all(15.0),
 
+                  ),
                 ),
               ),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(30.0, 60.0, 30.0, 30.0),
+              child: Center(
+                child: Container(height: 5.0,
+                  width: 150,
+                  decoration: BoxDecoration(
+                      color: constants.color_green,
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))
+                  ),),
+              ),
+            )
 
 
 

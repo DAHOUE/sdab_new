@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sdab_new/Screen/champ/champ_screen.dart';
+import 'package:sdab_new/Screen/ficheTechnique/fiche_screen.dart';
 
 import '../../../constants.dart';
 
@@ -51,9 +53,9 @@ class StateHomePopUp extends State<HomePopUp>{
                         })
                       ],
                     ),
-                    popupButton(0, 'Cycle de production', "icon"),
-                    popupButton(1, 'Champs', 'icon'),
-                    popupButton(2, 'Fiche technique', 'icon'),
+                    // popupButton(0, 'Cycle de production', "assets/icons/cycle.png" ),
+                    popupButton(1, 'Champs', "assets/icons/ananas.png"),
+                    popupButton(2, 'Fiche technique', "assets/icons/document.png"),
                     SizedBox(height: 50,)
 
 
@@ -67,7 +69,7 @@ class StateHomePopUp extends State<HomePopUp>{
     );
   }
 
-  Widget popupButton(int code,String text,String icon){
+  Widget popupButton(int code,String text, String image){
     return Padding(padding: EdgeInsets.symmetric(vertical: 5),
       child: GestureDetector(
         onTap: (){
@@ -83,43 +85,59 @@ class StateHomePopUp extends State<HomePopUp>{
               break;
           }
         },
-        child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-                Radius.circular(30.0) //         <--- border radius here
-            ),
-          ),
-          elevation: 2,
-          child: Container (
-            height: 70,
-            decoration: BoxDecoration(
-              border: Border.all(
-                  width: 1.0
-              ),
+        child: GestureDetector(
+          onTap: (){
+            switch(code){
+              case 0:
+                break;
+              case 1:
+                Navigator.push(context, new MaterialPageRoute(builder: (BuildContext) {
+                  return ChampScreen();
+                }));
+                break;
+              case 2:
+                Navigator.push(context, new MaterialPageRoute(builder: (BuildContext) {
+                  return FicheScreen();
+                }));
+                break;
+            }
+          },
+          child: Card(
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
                   Radius.circular(30.0) //         <--- border radius here
               ),
-            ), // <--- BoxDecoration here
-            child: Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(5),
-                  child: Text (
-                    "icons",
-                    style: TextStyle (fontSize: 18.0),
-                  ),),
-                Spacer(),
-                Padding(
-                  padding: EdgeInsets.all(5),
-                  child: Text (
-                    text,
-                    style: TextStyle (fontSize: 16.0),
-                  ),),
-                Spacer(),
-                Padding(
-                  padding: EdgeInsets.all(5),
-                  child: Icon(Icons.add_circle_outline_outlined)),
-              ],
+            ),
+            elevation: 2,
+            child: Container (
+              height: 70,
+              decoration: BoxDecoration(
+                border: Border.all(
+                    width: 1.0
+                ),
+                borderRadius: BorderRadius.all(
+                    Radius.circular(30.0) //         <--- border radius here
+                ),
+              ), // <--- BoxDecoration here
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(5),
+                    child: Image.asset(image),
+                  ),
+                  Spacer(),
+                  Padding(
+                    padding: EdgeInsets.all(5),
+                    child: Text (
+                      text,
+                      style: TextStyle (fontSize: 16.0),
+                    ),),
+                  Spacer(),
+                  Padding(
+                    padding: EdgeInsets.all(5),
+                    child: Icon(Icons.add_circle_outline_outlined)),
+                ],
+              ),
             ),
           ),
         ),

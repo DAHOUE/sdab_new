@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:sdab_new/Components/text_with_style.dart';
 import 'package:sdab_new/constants.dart' as constants;
 import 'dart:ui' as ui;
 
@@ -203,12 +204,59 @@ class _CarteState extends State<Carte> {
               markers: _markers,
               onCameraMove: _onCameraMove,
             ),
+            Positioned(
+              top: 10,
+              right: 15,
+              left: 15,
+              child: Container(
+                color: Colors.white,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: TextField(
+                        cursorColor: Colors.black,
+                        keyboardType: TextInputType.text,
+                        textInputAction: TextInputAction.go,
+                        decoration: InputDecoration(
+                          suffixIcon: Card(
+                            elevation: 5,
+                            color: Colors.yellow,
+                            child: IconButton(icon : Icon(Icons.search_outlined)),
+                          ),
+                            border: InputBorder.none,
+                            contentPadding:
+                            EdgeInsets.symmetric(horizontal: 15),
+                            hintText: "Rechercher dans un champ"),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Card(
+                        elevation: 5,
+                        color: Colors.lightGreen,
+                        child: TextButton(
+                          child: Text(
+                            "Filter",
+                            style: TextStyle(
+                              fontWeight:  FontWeight.bold,
+                              color: constants.color_green,
+                            ),
+                          )
+
+                        )
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Align(
                 alignment: Alignment.topRight,
                 child: Column(
                   children: <Widget> [
+                    SizedBox(height: 64.0),
                     FloatingActionButton(
                       onPressed: _onMapTypeButtonPressed,
                       materialTapTargetSize: MaterialTapTargetSize.padded,

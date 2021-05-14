@@ -7,6 +7,10 @@ import '../../constants.dart';
 import 'components/body.dart';
 import 'components/homepopup.dart';
 
+import 'package:sdab_new/constants.dart' as constants;
+
+
+
 
 class HomeScreens extends StatefulWidget {
   int bottomSelectedIndex=0;
@@ -36,7 +40,7 @@ class _HomeScreensState extends State<HomeScreens> {
 
         Positioned(child:isPoPup?HomePopUp(function: changeIsPoPup,): Container())
       ],),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar:BottomNavigationBar(
         selectedItemColor: color_yellow,
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
@@ -107,7 +111,7 @@ class _HomeScreensState extends State<HomeScreens> {
       case 0:
       case 3:
         return AppBar(
-          iconTheme: IconThemeData(color: Colors.blueGrey),
+          iconTheme: IconThemeData(color: Colors.blueGrey,),
           title: Text("e-pineA",style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 17,
@@ -151,6 +155,126 @@ class _HomeScreensState extends State<HomeScreens> {
         return AppBar();
         break;
     }
+  }
+
+  BottomNavigationBar myNavigation()
+  {
+    BottomNavigationBar producteur = BottomNavigationBar(
+      selectedItemColor: color_yellow,
+      type: BottomNavigationBarType.fixed,
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home_outlined),
+          title: Text('ACCUEIL'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.event_note_outlined),
+          title: Text('FICHES'),
+        ),
+
+        // BottomNavigationBarItem(
+        //   icon: Icon(Icons.map),
+        //   title: Text('CARTE'),
+        // ),
+        // BottomNavigationBarItem(
+        //   icon: Icon(Icons.perm_identity),
+        //   title: Text('COMPTE'),
+        // ),
+      ],
+      currentIndex: widget.bottomSelectedIndex,
+      onTap: (index){
+        setState(() {
+          widget.bottomSelectedIndex=index;
+        });
+      },
+    );
+    BottomNavigationBar exportateur = BottomNavigationBar(
+      selectedItemColor: color_yellow,
+      type: BottomNavigationBarType.fixed,
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home_outlined),
+          title: Text('ACCUEIL'),
+        ),
+
+        BottomNavigationBarItem(
+          icon: Icon(Icons.map),
+          title: Text('CARTE'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.perm_identity),
+          title: Text('COMPTE'),
+        ),
+      ],
+      currentIndex: widget.bottomSelectedIndex,
+      onTap: (index){
+        setState(() {
+          widget.bottomSelectedIndex=index;
+        });
+      },
+    );
+    BottomNavigationBar fournisseur = BottomNavigationBar(
+      selectedItemColor: color_yellow,
+      type: BottomNavigationBarType.fixed,
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home_outlined),
+          title: Text('ACCUEIL'),
+        ),
+
+        BottomNavigationBarItem(
+          icon: Icon(Icons.perm_identity),
+          title: Text('COMPTE'),
+        ),
+      ],
+      currentIndex: widget.bottomSelectedIndex,
+      onTap: (index){
+        setState(() {
+          widget.bottomSelectedIndex=index;
+        });
+      },
+    );
+    BottomNavigationBar tout = BottomNavigationBar(
+      selectedItemColor: color_yellow,
+      type: BottomNavigationBarType.fixed,
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home_outlined),
+          title: Text('ACCUEIL'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.event_note_outlined),
+          title: Text('FICHES'),
+        ),
+
+        BottomNavigationBarItem(
+          icon: Icon(Icons.map),
+          title: Text('CARTE'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.perm_identity),
+          title: Text('COMPTE'),
+        ),
+      ],
+      currentIndex: widget.bottomSelectedIndex,
+      onTap: (index){
+        setState(() {
+          widget.bottomSelectedIndex=index;
+        });
+      },
+    );
+
+    print(constants.type);
+    print("const");
+    if(constants.type=='Producteur')
+      return producteur;
+    else if(constants.type=='Fournisseur')
+      return fournisseur;
+    else if(constants.type=='Commerçant')
+      return exportateur;
+    else
+      return tout;
+
   }
 }
 

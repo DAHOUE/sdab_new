@@ -20,12 +20,17 @@ class _Body extends State<Body> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     List<String> titre= ["Producteur", "Transformateur", "Commerçant"];
-    Key key = new Key("value");
+    TextEditingController loginController = new TextEditingController();
+    TextEditingController mdpController = new TextEditingController();
+
+    final _formKey = new GlobalKey <FormState>();
     String dropdownvalue="";
     int _valu = 1;
     return SingleChildScrollView(
       physics: new AlwaysScrollableScrollPhysics(),
       child: Form(
+        key: _formKey,
+
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -37,8 +42,9 @@ class _Body extends State<Body> {
                 fontSize: 25,
               ),),
             Padding(
-              padding: const EdgeInsets.fromLTRB(15.0, 50.0, 15.0, 0.0),
+              padding: const EdgeInsets.fromLTRB(30.0, 50.0, 30.0, 0.0),
               child: TextFormField(
+                controller: loginController,
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   labelText: "Numéro de téléphone",
@@ -46,12 +52,23 @@ class _Body extends State<Body> {
                   hintText: "229 95 20 69 75 ",
 
                 ),
+                validator: (value){
+                  if(value.isEmpty)
+                    return ("Saisir votre noméro de téléphone");
+                  else if(value.length>12)
+                    return ("Saisir  un numéro correct");
+                  else
+                    return null;
+
+
+                },
               ),
 
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(15.0,10.0, 15.0, 0.0),
+              padding: const EdgeInsets.fromLTRB(30.0,10.0, 30.0, 0.0),
               child: TextFormField(
+                controller: mdpController,
                 obscureText: true,
                 cursorColor: Colors.black,
                 decoration: InputDecoration(
@@ -60,6 +77,12 @@ class _Body extends State<Body> {
 
 
                 ),
+                validator: (value){
+                  if(value.isEmpty)
+                    return("Saisir votre mots de passe");
+                  else
+                    return null;
+                },
               ),
 
             ),
@@ -71,16 +94,21 @@ class _Body extends State<Body> {
                   ),),
               ),),
             Padding(
-              padding: const EdgeInsets.fromLTRB(5.0, 30.0, 5.0, 0.0),
+              padding: const EdgeInsets.fromLTRB(30.0, 30.0, 30.0, 0.0),
               child: TextButton(
-                onPressed: versPageHome,
+                onPressed: (){
+                  if(_formKey.currentState.validate()) {
+                    versPageHome();
+                  }
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
 
-                    Icon(Icons.ac_unit,
-                      size: 30.0,
-                      color: Colors.white,),
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Image.asset("assets/icons/register.png"),
+                    ),
                     Text(
                       "Connexion",
                       style: TextStyle(color: Colors.white),
@@ -152,6 +180,14 @@ class _Body extends State<Body> {
     Navigator.push(context, new MaterialPageRoute(builder: (BuildContext) {
       return Otp();
     }));
+  }
+
+  bool contientQueDesChiffres(String value){
+    if(value.startsWith('+',0) && value.length==12)
+      {
+
+      }
+
   }
 
 }

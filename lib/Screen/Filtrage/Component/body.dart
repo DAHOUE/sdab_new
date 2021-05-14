@@ -20,10 +20,13 @@ class _Body extends State<Body> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    List<String> titre= ["Producteur", "Transformateur", "Commerçant"];
+   // List<String> titre= ["Producteur", "Transformateur", "Commerçant"];
     Key key = new Key("value");
     String dropdownvalue="";
-    int _valu = 1;
+    int _valuVariete = 1;
+    int _valueZone = 1;
+    int _valuequantite = 1;
+    int _valueEtat = 1;
     return SingleChildScrollView(
       physics: new AlwaysScrollableScrollPhysics(),
       child: Column(
@@ -59,21 +62,21 @@ class _Body extends State<Body> {
                 isExpanded: true,
                 icon: Icon(Icons.keyboard_arrow_down),
 
-                value: _valu,
+                value: _valuVariete,
                 isDense: true,
                 items: [
 
                   DropdownMenuItem(child: Center(child: Text("Variété d'ananas")), value: 1,),
-                  DropdownMenuItem(child: Center(child: Text("Variété 1")), value: 2,),
-                  DropdownMenuItem(child: Center(child: Text("Variété 2")), value: 3,),
+                  DropdownMenuItem(child: Center(child: Text("Cayenne Lisse")), value: 2,),
+                  DropdownMenuItem(child: Center(child: Text("Pains de Sucre")), value: 3,),
                 ],
                 onChanged: (value){
                   setState(() {
-                    _valu = value;
+                    _valuVariete = value;
 
 
                   });
-                  print(_valu);
+                  print(_valuVariete);
                 },
                 decoration: InputDecoration(
                     hintTextDirection: TextDirection.ltr,
@@ -105,21 +108,25 @@ class _Body extends State<Body> {
                 isExpanded: true,
                 icon: Icon(Icons.keyboard_arrow_down),
 
-                value: _valu,
+                value: _valueZone,
                 isDense: true,
                 items: [
 
                   DropdownMenuItem(child: Center(child: Text("Zone de production")), value: 1,),
-                  DropdownMenuItem(child: Center(child: Text("Zone 1")), value: 2,),
-                  DropdownMenuItem(child: Center(child: Text("Zone 2")), value: 3,),
+                  DropdownMenuItem(child: Center(child: Text("Allada")), value: 2,),
+                  DropdownMenuItem(child: Center(child: Text("Tori")), value: 3,),
+                  DropdownMenuItem(child: Center(child: Text("Azovè")), value: 4,),
+                  DropdownMenuItem(child: Center(child: Text("Zè")), value: 5,),
+                  DropdownMenuItem(child: Center(child: Text("Toffo")), value: 6,),
+
                 ],
                 onChanged: (value){
                   setState(() {
-                    _valu = value;
+                    _valueZone = value;
 
 
                   });
-                  print(_valu);
+                  print(_valueZone);
                 },
                 decoration: InputDecoration(
                     hintTextDirection: TextDirection.ltr,
@@ -151,7 +158,7 @@ class _Body extends State<Body> {
                 isExpanded: true,
                 icon: Icon(Icons.keyboard_arrow_down),
 
-                value: _valu,
+                value: _valuequantite,
                 isDense: true,
                 items: [
 
@@ -164,11 +171,11 @@ class _Body extends State<Body> {
                 ],
                 onChanged: (value){
                   setState(() {
-                    _valu = value;
+                    _valuequantite = value;
 
 
                   });
-                  print(_valu);
+                  print(_valuequantite);
                 },
                 decoration: InputDecoration(
                     hintTextDirection: TextDirection.ltr,
@@ -200,11 +207,11 @@ class _Body extends State<Body> {
                 isExpanded: true,
                 icon: Icon(Icons.keyboard_arrow_down),
 
-                value: _valu,
+                value: _valueEtat,
                 isDense: true,
                 items: [
 
-                  DropdownMenuItem(child: Center(child: Text("Quantité")), value: 1,),
+                  DropdownMenuItem(child: Center(child: Text("Etat de maturité")), value: 1,),
                   DropdownMenuItem(child: Center(child: Text("0 - 3 mois")), value: 2,),
                   DropdownMenuItem(child: Center(child: Text("3 - 6 mois")), value: 3,),
                   DropdownMenuItem(child: Center(child: Text("6 - 9 mois")), value: 4,),
@@ -213,9 +220,9 @@ class _Body extends State<Body> {
                 ],
                 onChanged: (value){
                   setState(() {
-                    _valu = value;
+                    _valueEtat = value;
                   });
-                  print(_valu);
+                  print(_valueEtat);
                 },
                 decoration: InputDecoration(
                     hintTextDirection: TextDirection.ltr,
@@ -232,7 +239,6 @@ class _Body extends State<Body> {
               ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.fromLTRB(35.0, 30.0, 35.0, 0.0),
             child: GestureDetector(
