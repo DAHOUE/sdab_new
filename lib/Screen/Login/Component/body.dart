@@ -16,21 +16,28 @@ class Body extends StatefulWidget{
 }
 
 class _Body extends State<Body> {
+  Size size ;
+  List<String> titre= ["Producteur", "Transformateur", "Commerçant"];
+  TextEditingController loginController = new TextEditingController();
+  TextEditingController mdpController = new TextEditingController();
+  String dropdownvalue="";
+  int _valu = 1;
+  final _formKey = new GlobalKey <FormState>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    List<String> titre= ["Producteur", "Transformateur", "Commerçant"];
-    TextEditingController loginController = new TextEditingController();
-    TextEditingController mdpController = new TextEditingController();
+    size= MediaQuery.of(context).size;
 
-    final _formKey = new GlobalKey <FormState>();
-    String dropdownvalue="";
-    int _valu = 1;
     return SingleChildScrollView(
       physics: new AlwaysScrollableScrollPhysics(),
       child: Form(
         key: _formKey,
-
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -145,9 +152,6 @@ class _Body extends State<Body> {
                   ),),
               ),
             )
-
-
-
           ],
         ),
       ),

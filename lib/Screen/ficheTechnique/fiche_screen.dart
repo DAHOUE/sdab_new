@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:sdab_new/Screen/ficheTechnique/Component/body.dart';
 
 class FicheScreen extends StatelessWidget {
+  final fiche;
+
+  const FicheScreen({Key key, this.fiche}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +13,7 @@ class FicheScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0.0,
       ),
-      body: Body(),
+      body: Body(fiche:fiche),
     );
   }
 }

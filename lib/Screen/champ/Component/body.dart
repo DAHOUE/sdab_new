@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -112,26 +112,25 @@ class _Body extends State<Body> {
             ),
             Padding(padding: const EdgeInsets.fromLTRB(30.0, 30.0,30.0, 0.0),
               child: TextFormField(
-              showCursor: false,
-              enableInteractiveSelection: false,
-              decoration: InputDecoration(
-                labelText: "Position",
-                hintText: "Selectionner votre position",
-                labelStyle: TextStyle(
-                  color: Colors.black54,
-                ),
-                suffixIcon: Container(
-                  padding: EdgeInsets.all(2.0),
-                  margin: EdgeInsets.all(6.0),
-                  child: TextButton(style: ButtonStyle(
-                    minimumSize: MaterialStateProperty.all(Size(8.0,15.0)),
-                    backgroundColor: MaterialStateProperty.all(constants.color_green),
+                showCursor: false,
+                enableInteractiveSelection: false,
+                decoration: InputDecoration(
+                  labelText: "Position",
+                  hintText: "Selectionner votre position",
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
                   ),
-                    child: Icon(Icons.add_location_outlined, color: Colors.white,),
-                )
-              ),
-            ),),),
-
+                  suffixIcon: Container(
+                      padding: EdgeInsets.all(2.0),
+                      margin: EdgeInsets.all(6.0),
+                      child: TextButton(style: ButtonStyle(
+                        minimumSize: MaterialStateProperty.all(Size(8.0,15.0)),
+                        backgroundColor: MaterialStateProperty.all(constants.color_green),
+                      ),
+                        child: Icon(Icons.add_location_outlined, color: Colors.white,),
+                      )
+                  ),
+                ),),),
             Padding(
               padding: const EdgeInsets.fromLTRB(30.0, 30.0,30.0, 0.0),
               child: GestureDetector(
@@ -140,10 +139,7 @@ class _Body extends State<Body> {
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-
                     children: [
-
-
                       Container(
                         margin: EdgeInsets.all(8.0),
                         child: Text(
